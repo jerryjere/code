@@ -20,16 +20,13 @@ class Program
                 if (str[i] == str[j])
                     count++;
             }
-
             Console.WriteLine(str[i] + " = " + count);
         }
     }
 }
 
 
-
-
-----dynamic---
+---dynamic---
 
 
 using System;
@@ -37,25 +34,23 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter array size: ");
-        int n = Convert.ToInt32(Console.ReadLine());
-        int[] arr = new int[n];
-        Console.WriteLine("Enter array elements:");
-        for (int i = 0; i < n; i++)
-            arr[i] = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Enter target: ");
-        int target = Convert.ToInt32(Console.ReadLine());
-        for (int i = 0; i < n; i++)
+        Console.Write("Enter a string: ");
+        string str = Console.ReadLine();
+        bool[] visited = new bool[str.Length];
+        for (int i = 0; i < str.Length; i++)
         {
-            for (int j = i + 1; j < n; j++)
+            if (visited[i])
+                continue;
+            int count = 1;
+            for (int j = i + 1; j < str.Length; j++)
             {
-                if (arr[i] + arr[j] == target)
+                if (str[i] == str[j])
                 {
-                    Console.WriteLine("Indices: " + i + ", " + j);
-                    return;
+                    count++;
+                    visited[j] = true;
                 }
             }
+            Console.WriteLine(str[i] + " = " + count);
         }
-        Console.WriteLine("No pair found");
     }
 }
