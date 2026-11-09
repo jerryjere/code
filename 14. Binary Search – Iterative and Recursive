@@ -38,7 +38,7 @@ class Program
 
 --dynamic--
 
-
+A. Iterative Binary Search
 
 using System;
 class Program
@@ -67,3 +67,31 @@ class Program
     }
 }
 
+B. Recursive Binary Search
+
+using System;
+class Program
+{
+    static int Search(int[] arr, int low, int high, int target)
+    {
+        if (low > high)
+            return -1;
+        int mid = (low + high) / 2;
+        if (arr[mid] == target)
+            return mid;
+        if (arr[mid] < target)
+            return Search(arr, mid + 1, high, target);
+        return Search(arr, low, mid - 1, target);
+    }
+    static void Main()
+    {
+        int[] arr = { 10, 20, 30, 40, 50 };
+        Console.Write("Enter number: ");
+        int target = Convert.ToInt32(Console.ReadLine());
+        int result = Search(arr, 0, arr.Length - 1, target);
+        if (result == -1)
+            Console.WriteLine("Not Found");
+        else
+            Console.WriteLine("Found at index: " + result);
+    }
+}
